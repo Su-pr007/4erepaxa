@@ -12,46 +12,37 @@ namespace NewTurtle
 {
     class Program
     {
+
         static void Main(string[] args)
         {
-            Turtle.Speed = 9;
-            WriteM(50, 200, 100);
-            WriteA(200, 200, 100);
-            WriteM(350, 200, 100);
-            WriteA(500, 200, 100);
+            while (true)
+            {
+                GraphicsWindow.KeyDown += GraphicsWindow_KeyDown;
+                Turtle.Move(10);
+            }
         }
-        static void WriteM(int x, int y, int size)
+
+        private static void GraphicsWindow_KeyDown()
         {
-            Turtle.X = x;
-            Turtle.Y = y;
-            Turtle.Angle = 0;
-            Turtle.Move(size);
-            Turtle.Angle = 150;
-            int line1 = Microsoft.SmallBasic.Library.Math.SquareRoot(System.Math.Pow(size, 2)+ System.Math.Pow(size/2, 2));
-            Turtle.Move(line1);
-            Turtle.Angle = 30;
-            Turtle.Move(line1);
-            Turtle.Angle = 180;
-            Turtle.Move(size);
-        }
-        static void WriteA(int x, int y, int size)
-        {
-            Turtle.X = x;
-            Turtle.Y = y;
-            Turtle.Angle = 30;
-            int line1 = Microsoft.SmallBasic.Library.Math.SquareRoot(System.Math.Pow(size, 2) + System.Math.Pow(size / 2, 2));
-            Turtle.Move(line1);
-            Turtle.Angle = 150;
-            Turtle.Move(line1);
-            Turtle.PenUp();
-            Turtle.X = x;
-            Turtle.Y = y;
-            Turtle.Angle = 30;
-            Turtle.Move(line1 / 2);
-            Turtle.Angle = 90;
-            Turtle.PenDown();
-            int line2 = Microsoft.SmallBasic.Library.Math.SquareRoot(System.Math.Pow(line1 / 2, 2) - System.Math.Pow(size / 2, 2));
-            Turtle.Move(size - line2*2);
+            string key = GraphicsWindow.LastKey;
+            switch (key)
+            {
+                case "Up":
+                    Turtle.Angle = 0;
+                    break;
+                case "Right":
+                    Turtle.Angle = 90;
+                    break;
+                case "Down":
+                    Turtle.Angle = 180;
+                    break;
+                case "Left":
+                    Turtle.Angle = 270;
+                    break;
+                case "Escape":
+                    Process.GetCurrentProcess().Kill();
+                    break;
+            }
         }
     }
 }

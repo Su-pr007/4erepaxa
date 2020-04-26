@@ -15,6 +15,8 @@ namespace NewTurtle
 
         static void Main(string[] args)
         {
+            Random rand = new Random();
+
             // Не оставлять след
             Turtle.PenUp();
 
@@ -23,7 +25,6 @@ namespace NewTurtle
             var food = Shapes.AddRectangle(10, 10);
             int foodX = 200;
             int foodY = 200;
-            Random rand;
             Shapes.Move(food, foodX, foodY);
 
             while (true)
@@ -32,7 +33,10 @@ namespace NewTurtle
                 Turtle.Move(10);
                 if((Turtle.X >= foodX - 10 && Turtle.X <= foodX + 10) && (Turtle.Y >= foodY - 10 && Turtle.Y <= foodY + 10))
                 {
-                    Shapes.Move(food, foodX+=10, foodY);
+                    foodX = rand.Next(0, GraphicsWindow.Width);
+                    foodY = rand.Next(0, GraphicsWindow.Height);
+                    Shapes.Move(food, foodX, foodY);
+                    Turtle.Speed++;
                 }
             }
         }

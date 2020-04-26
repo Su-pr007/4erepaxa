@@ -15,10 +15,25 @@ namespace NewTurtle
 
         static void Main(string[] args)
         {
+            // Не оставлять след
+            Turtle.PenUp();
+
+            // Добавление еды
+            GraphicsWindow.BrushColor = "Green";
+            var food = Shapes.AddRectangle(10, 10);
+            int foodX = 200;
+            int foodY = 200;
+            Random rand;
+            Shapes.Move(food, foodX, foodY);
+
             while (true)
             {
                 GraphicsWindow.KeyDown += GraphicsWindow_KeyDown;
                 Turtle.Move(10);
+                if((Turtle.X >= foodX - 10 && Turtle.X <= foodX + 10) && (Turtle.Y >= foodY - 10 && Turtle.Y <= foodY + 10))
+                {
+                    Shapes.Move(food, foodX+=10, foodY);
+                }
             }
         }
 

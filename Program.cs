@@ -15,47 +15,43 @@ namespace NewTurtle
         static void Main(string[] args)
         {
             Turtle.Speed = 9;
-            WriteT(200, 200, 100);
-            WriteO(250, 200, 100);
-            WriteR(350, 200, 100);
-            WriteT(430, 200, 100);
+            WriteM(50, 200, 100);
+            WriteA(200, 200, 100);
+            WriteM(350, 200, 100);
+            WriteA(500, 200, 100);
         }
-        static void WriteT(int x, int y, int size)
+        static void WriteM(int x, int y, int size)
         {
             Turtle.X = x;
             Turtle.Y = y;
             Turtle.Angle = 0;
             Turtle.Move(size);
-            Turtle.Angle = 270;
-            Turtle.Move(size / 4);
+            Turtle.Angle = 150;
+            int line1 = Microsoft.SmallBasic.Library.Math.SquareRoot(System.Math.Pow(size, 2)+ System.Math.Pow(size/2, 2));
+            Turtle.Move(line1);
+            Turtle.Angle = 30;
+            Turtle.Move(line1);
+            Turtle.Angle = 180;
+            Turtle.Move(size);
+        }
+        static void WriteA(int x, int y, int size)
+        {
+            Turtle.X = x;
+            Turtle.Y = y;
+            Turtle.Angle = 30;
+            int line1 = Microsoft.SmallBasic.Library.Math.SquareRoot(System.Math.Pow(size, 2) + System.Math.Pow(size / 2, 2));
+            Turtle.Move(line1);
+            Turtle.Angle = 150;
+            Turtle.Move(line1);
+            Turtle.PenUp();
+            Turtle.X = x;
+            Turtle.Y = y;
+            Turtle.Angle = 30;
+            Turtle.Move(line1 / 2);
             Turtle.Angle = 90;
-            Turtle.Move(size / 2);
-        }
-        static void WriteO(int x, int y, int size)
-        {
-            Turtle.X = x;
-            Turtle.Y = y;
-            Turtle.Angle = 0;
-            Turtle.Move(size);
-            Turtle.TurnRight();
-            Turtle.Move(size / 2);
-            Turtle.TurnRight();
-            Turtle.Move(size);
-            Turtle.TurnRight();
-            Turtle.Move(size / 2);
-        }
-        static void WriteR(int x, int y, int size)
-        {
-            Turtle.X = x;
-            Turtle.Y = y;
-            Turtle.Angle = 0;
-            Turtle.Move(size);
-            Turtle.TurnRight();
-            Turtle.Move(size / 3);
-            Turtle.TurnRight();
-            Turtle.Move(size / 3);
-            Turtle.TurnRight();
-            Turtle.Move(size / 3);
+            Turtle.PenDown();
+            int line2 = Microsoft.SmallBasic.Library.Math.SquareRoot(System.Math.Pow(line1 / 2, 2) - System.Math.Pow(size / 2, 2));
+            Turtle.Move(size - line2*2);
         }
     }
 }

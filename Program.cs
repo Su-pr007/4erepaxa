@@ -13,10 +13,20 @@ namespace NewTurtle
         static void Main(string[] args)
         {
             Turtle.Speed = 9;
-            for(int i = 0; i < 4; i++)
+            int i = 0;
+            while(i < 5)
             {
-                Turtle.Move(100);
+                Turtle.Move(10);
                 Turtle.TurnRight();
+                Turtle.Move(10);
+                Turtle.TurnRight();
+
+                Turtle.Move(10);
+                Turtle.TurnLeft();
+                Turtle.Move(10);
+                Turtle.TurnLeft();
+
+                i++;
             }
         }
     }

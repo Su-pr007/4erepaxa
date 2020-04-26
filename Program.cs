@@ -14,17 +14,14 @@ namespace NewTurtle
         {
             Turtle.Speed = 9;
             int i = 0;
-            while(i < 5)
+            while(i < 2)
             {
-                Turtle.Move(10);
-                Turtle.TurnRight();
-                Turtle.Move(10);
-                Turtle.TurnRight();
-
-                Turtle.Move(10);
-                Turtle.TurnLeft();
-                Turtle.Move(10);
-                Turtle.TurnLeft();
+                Turtle.Move(80);
+                Turtle.Angle += 45;
+                Turtle.Move(30);
+                Turtle.Angle += 90;
+                Turtle.Move(30);
+                Turtle.Angle += 45;
 
                 i++;
             }
